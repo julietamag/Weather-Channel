@@ -8,20 +8,17 @@ const grados = document.getElementById('grados');
 const fahrBtn = document.getElementById('fahrenheit');
 const celBtn = document.getElementById('celcius');
 const metricaBtn = document.getElementById('metric');
-const key = '682d65cd5f8f2fec0645e96fa514960b';
 let units = 'metric';
 let metrica = '°C';
 let locacion = document.getElementById('lugar');
 let encodedLoc;
 
 function cargarCiudad(){
-    console.log(locacion)
-    if(typeof locacion == 'string'){
-        encodedLoc = encodeURI(locacion);
-    } else encodedLoc = encodeURI(locacion.value);
+    const key = '682d65cd5f8f2fec0645e96fa514960b';
+    encodedLoc = encodeURI(locacion.value);
     $.getJSON(`https://api.openweathermap.org/data/2.5/weather?q=${encodedLoc}&appid=${key}&units=${units}`, function(data){
         ciudad.textContent = data.name;
-        temperatura.textContent = Math.floor(data.main.temp);
+        temperatura.textContent = Math.round(data.main.temp);
         grados.innerHTML = metrica;
         wicon.src = `https://openweathermap.org/img/wn/${data.weather[0].icon}.png`;
         descripcion.textContent = data.weather[0].descripcion
@@ -31,23 +28,30 @@ function cargarCiudad(){
     metricaBtn.style.visibility = 'visible';
 }
 
-function toggleMetric(){
-    if(celBtn.classList.contains('active')){
-        fahrBtn.classList.add('active');
-        celBtn.classList.remove('active');
-        locacion = ciudad.innerHTML
-        cargarCiudad()
-    } else {
-        celBtn.classList.add('active')
+function toggleToCel(){
+    if(fahrBtn.classList.contains('active')){
         fahrBtn.classList.remove('active')
-        metrica = '°F';
+        celBtn.classList.add('active')
+        metrica = '°C';
+        grados.innerHTML = metrica;
+        temperatura.innerHTML = Math.round((temperatura.innerHTML - 32) / 1.80);
+        console.log(temperatura.innerHTML)
+    }
+} 
+
+function toggleToFahr() {
+    if(celBtn.classList.contains('active')){
+        celBtn.classList.remove('active');
+        fahrBtn.classList.add('active');
         units = 'imperial';
-        locacion = ciudad.innerHTML
-        cargarCiudad()
+        metrica = '°F';
+        grados.innerHTML = metrica;
+        temperatura.innerHTML = Math.round(1.80 * temperatura.innerHTML + 32);
+        console.log(temperatura.innerHTML)
     }
 }
 
 enviarBtn.addEventListener('click', cargarCiudad);
-fahrBtn.addEventListener('click', toggleMetric);
-celBtn.addEventListener('click', toggleMetric);
+fahrBtn.addEventListener('click', toggleToFahr);
+celBtn.addEventListener('click', toggleToCel);
 
