@@ -29,6 +29,7 @@ function cargarCiudad(){
         locacion.value = ''
         container.style.visibility = 'visible';
         metricaBtn.style.visibility = 'visible';
+        errorDisplayer.style.visibility = 'hidden'
     })
     .catch(()=>{
         container.style.visibility = 'hidden';
