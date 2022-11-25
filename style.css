@@ -1,37 +1,38 @@
-body{
+body {
     background-color: #00a6fb;
     font-family: 'Raleway', sans-serif;
 }
 
-h1{
+h1 {
     color: white;
     font-weight: 600;
     font-size: 2.3rem;
 }
-li{
+
+li {
     text-decoration: none;
     list-style: none;
 }
 
-.main{
+.main {
     width: 80%;
     border-radius: 10%;
     height: 30rem;
     margin: 4rem auto;
 }
 
-.encabezado{
+.encabezado {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
 }
 
-#container{
+#container {
     visibility: hidden;
 }
 
-#enviar{
+#enviar {
     width: 2.8rem;
     height: 2.8rem;
     border-radius: 50%;
@@ -40,14 +41,14 @@ li{
     box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
 }
 
-.search-bar{
+.search-bar {
     width: 80%;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-#lugar{
+#lugar {
     width: 70%;
     margin-right: .5rem;
     padding: .5rem 1rem;
@@ -55,31 +56,31 @@ li{
     border: none;
 }
 
-#container{
+#container {
     border-radius: 3rem;
     margin-top: 2rem;
     background-color: #0582ca;
 }
 
-.ciudades{
-   text-align: center;
-   color: white;
-   padding: 2rem 3rem;
+.ciudades {
+    text-align: center;
+    color: white;
+    padding: 2rem 3rem;
 }
 
-#wicon{
+#wicon {
     width: 5rem;
 }
 
-#temperatura{
+#temperatura {
     font-size: 3rem;
 }
 
-#ciudad{
+#ciudad {
     font-size: 3.2rem;
 }
 
-#metric{
+#metric {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -92,19 +93,19 @@ li{
     border: none;
 }
 
-#celcius{
+#celcius {
     border-radius: 2rem 0 0 2rem;
 }
 
-#fahrenheit{
+#fahrenheit {
     border-radius: 0 2rem 2rem 0;
 }
 
-.active{
+.active {
     opacity: 80%;
     box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 4px 0px inset;
 }
 
-#error-displayer{
+#error-displayer {
     color: white;
 }

@@ -14,31 +14,31 @@ let metrica = '°C';
 let locacion = document.getElementById('lugar');
 let encodedLoc;
 
-function cargarCiudad(){
+function cargarCiudad() {
     const key = '682d65cd5f8f2fec0645e96fa514960b';
     encodedLoc = encodeURI(locacion.value);
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${encodedLoc}&appid=${key}&units=${units}`;
     fetch(url)
-    .then(response => response.json())
-    .then(data => {
-        ciudad.textContent = data.name;
-        temperatura.textContent = Math.round(data.main.temp);
-        grados.innerHTML = metrica;
-        wicon.src = `https://openweathermap.org/img/wn/${data.weather[0].icon}.png`;
-        descripcion.innerHTML = data.weather[0].description;
-        locacion.value = ''
-        container.style.visibility = 'visible';
-        metricaBtn.style.visibility = 'visible';
-    })
-    .catch(()=>{
-        container.style.visibility = 'hidden';
-        metricaBtn.style.visibility = 'hidden';
-        errorDisplayer.innerHTML = "Please search for a valid city 😩";
-    })
+        .then(response => response.json())
+        .then(data => {
+            ciudad.textContent = data.name;
+            temperatura.textContent = Math.round(data.main.temp);
+            grados.innerHTML = metrica;
+            wicon.src = `https://openweathermap.org/img/wn/${data.weather[0].icon}.png`;
+            descripcion.innerHTML = data.weather[0].description;
+            locacion.value = ''
+            container.style.visibility = 'visible';
+            metricaBtn.style.visibility = 'visible';
+        })
+        .catch(() => {
+            container.style.visibility = 'hidden';
+            metricaBtn.style.visibility = 'hidden';
+            errorDisplayer.innerHTML = "Please search for a valid city 😩";
+        })
 }
 
-function toggleToCel(){
-    if(fahrBtn.classList.contains('active')){
+function toggleToCel() {
+    if (fahrBtn.classList.contains('active')) {
         fahrBtn.classList.remove('active')
         celBtn.classList.add('active')
         units = 'metric';
@@ -46,10 +46,10 @@ function toggleToCel(){
         grados.innerHTML = metrica;
         temperatura.innerHTML = Math.round((temperatura.innerHTML - 32) / 1.80);
     }
-} 
+}
 
 function toggleToFahr() {
-    if(celBtn.classList.contains('active')){
+    if (celBtn.classList.contains('active')) {
         celBtn.classList.remove('active');
         fahrBtn.classList.add('active');
         units = 'imperial';
